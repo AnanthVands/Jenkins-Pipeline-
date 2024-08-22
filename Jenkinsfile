@@ -53,7 +53,7 @@ pipeline{
                 }
                 failure {
                     emailext (
-                        to: "ananthvandothra@gmail.com"
+                        to: "ananthvandothra@gmail.com",
                         subject: "Failed Security Scan Stage",
                         body: "The Security Scan stage failed.",
                         attachLog: true
