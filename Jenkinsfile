@@ -1,7 +1,7 @@
-pipeline{
-    agent any 
+pipeline {
+    agent any
 
-    stages{
+    stages {
         stage('Build') {
             steps {
                 echo "Building the code using Maven."
@@ -14,13 +14,13 @@ pipeline{
             }
             post {
                 success {
-                    mail to: "ananthvandothra@gmail.com",
+                    emailext to: "ananthvandothra@gmail.com",
                         subject: "Successful Unit and Integration Tests Stage",
                         body: "The Unit and Integration Tests stage completed successfully!",
                         attachLog: true
                 }
                 failure {
-                    mail to: "ananthvandothra@gmail.com",
+                    emailext to: "ananthvandothra@gmail.com",
                         subject: "Failed Unit and Integration Tests Stage",
                         body: "The Unit and Integration Tests stage failed.",
                         attachLog: true
@@ -40,13 +40,13 @@ pipeline{
             }
             post {
                 success {
-                    mail to: "ananthvandothra@gmail.com",
+                    emailext to: "ananthvandothra@gmail.com",
                         subject: "Successful Security Scan",
                         body: "The Security Scan stage completed successfully!",
                         attachLog: true
                 }
                 failure {
-                    mail to: "ananthvandothra@gmail.com",
+                    emailext to: "ananthvandothra@gmail.com",
                         subject: "Failed Security Scan Stage",
                         body: "The Security Scan stage failed.",
                         attachLog: true
@@ -72,5 +72,5 @@ pipeline{
             }
         }
     }
-
 }
+
