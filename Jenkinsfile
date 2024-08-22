@@ -46,7 +46,7 @@ pipeline{
                         attachLog: true
                 }
                 failure {
-                    mail to: "ananthvandothra@gmail.com"
+                    mail to: "ananthvandothra@gmail.com",
                         subject: "Failed Security Scan Stage",
                         body: "The Security Scan stage failed.",
                         attachLog: true
