@@ -16,12 +16,12 @@ pipeline {
                 success {
                     emailext to: "ananthvandothra@gmail.com",
                         subject: "Successful Unit and Integration Tests Stage",
-                        body: "The Unit and Integration Tests stage completed successfully!",
+                        body: "The Unit and Integration Tests stage completed successfully!"
                 }
                 failure {
                     emailext to: "ananthvandothra@gmail.com",
                         subject: "Failed Unit and Integration Tests Stage",
-                        body: "The Unit and Integration Tests stage failed.",
+                        body: "The Unit and Integration Tests stage failed."
                 }
             }
         }
