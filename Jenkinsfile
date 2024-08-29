@@ -14,10 +14,10 @@ pipeline {
             }
             post {
                 success {
-                    emailext attachLog: true, body: 'The Unit and Integration Tests stage completed successfully!', compressLog: true, subject: 'Successful Unit and Integration Tests Stage', to: 'ananthvandothra@gmail.com'
+                    mail attachLog: true, body: 'The Unit and Integration Tests stage completed successfully!', compressLog: true, subject: 'Successful Unit and Integration Tests Stage', to: 'ananthvandothra@gmail.com'
                 }
                 failure {
-                    emailext attachLog: true, body: 'The Unit and Integration Tests stage failed.', compressLog: true, subject: 'Failed Unit and Integration Tests Stage', to: 'ananthvandothra@gmail.com'
+                    mail attachLog: true, body: 'The Unit and Integration Tests stage failed.', compressLog: true, subject: 'Failed Unit and Integration Tests Stage', to: 'ananthvandothra@gmail.com'
                 }
             }
         }
