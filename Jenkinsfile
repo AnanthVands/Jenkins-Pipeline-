@@ -14,14 +14,20 @@ pipeline {
             }
             post {
                 success {
-                    mail to: "ananthvandothra@gmail.com",
-                    subject: "Successful Unit and Integration Tests Stage",
-                    body: "The Unit and Integration Tests stage completed successfully!"
+                    emailext(
+                        to: "ananthvandothra@gmail.com",
+                        subject: "Successful Unit and Integration Tests Stage",
+                        body: "The Unit and Integration Tests stage completed successfully!",
+                        attachLog: true
+                    )
                 }
                 failure {
-                    mail to: "ananthvandothra@gmail.com",
-                    subject: "Failed Unit and Integration Tests Stage",
-                    body: "The Unit and Integration Tests stage failed."
+                    emailext(
+                        to: "ananthvandothra@gmail.com",
+                        subject: "Failed Unit and Integration Tests Stage",
+                        body: "The Unit and Integration Tests stage failed.",
+                        attachLog: true
+                    )
                 }
             }
         }
@@ -38,14 +44,20 @@ pipeline {
             }
             post {
                 success {
-                    mail to: "ananthvandothra@gmail.com",
-                    subject: "Successful Security Scan",
-                    body: "The Security Scan stage completed successfully!"
+                    emailext(
+                        to: "ananthvandothra@gmail.com",
+                        subject: "Successful Security Scan",
+                        body: "The Security Scan stage completed successfully!",
+                        attachLog: true
+                    )
                 }
                 failure {
-                    mail to: "ananthvandothra@gmail.com",
-                    subject: "Failed Security Scan Stage",
-                    body: "The Security Scan stage failed."
+                    emailext(
+                        to: "ananthvandothra@gmail.com",
+                        subject: "Failed Security Scan Stage",
+                        body: "The Security Scan stage failed.",
+                        attachLog: true
+                    )
                 }
             }
         }
