@@ -14,11 +14,16 @@ pipeline {
             }
             post {
                 success {
-                    mail attachLog: true, body: 'The Unit and Integration Tests stage completed successfully!', compressLog: true, subject: 'Successful Unit and Integration Tests Stage', to: 'ananthvandothra@gmail.com'
+                    mail to: "ananthvandothra@gmail.com",
+                    subject: "Successful Unit and Integration Tests Stage",
+                    body: "The Unit and Integration Tests stage completed successfully!",
+                    attachLog: true
                 }
                 failure {
-                    mail attachLog: true, body: 'The Unit and Integration Tests stage failed.', compressLog: true, subject: 'Failed Unit and Integration Tests Stage', to: 'ananthvandothra@gmail.com'
-                }
+                    mail to: "ananthvandothra@gmail.com",
+                    subject: "Failed Unit and Integration Tests Stage",
+                    body: "The Unit and Integration Tests stage failed.",
+                    attachLog: true
             }
         }
 
@@ -34,10 +39,16 @@ pipeline {
             }
             post {
                 success {
-                    emailext attachLog: true, body: 'The Security Scan stage completed successfully!', compressLog: true, subject: 'Successful Security Scan', to: 'ananthvandothra@gmail.com'
+                    mail to: "ananthvandothra@gmail.com",
+                    subject: "Successful Security Scan",
+                    body: "The Security Scan stage completed successfully!",
+                    attachLog: true
                 }
                 failure {
-                    emailext attachLog: true, body: 'The Security Scan stage failed.', compressLog: true, subject: 'Failed Security Scan Stage', to: 'ananthvandothra@gmail.com'
+                    mail to: "ananthvandothra@gmail.com",
+                    subject: "Failed Security Scan Stage",
+                    body: "The Security Scan stage failed.",
+                    attachLog: true
                 }
             }
         }
