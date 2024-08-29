@@ -17,10 +17,7 @@ pipeline {
                     emailext attachLog: true, body: 'The Unit and Integration Tests stage completed successfully!', subject: 'Successful Unit and Integration Tests Stage', to: 'ananthvandothra@gmail.com'
                 }
                 failure {
-                    mail to: "ananthvandothra@gmail.com",
-                    subject: "Failed Unit and Integration Tests Stage",
-                    body: "The Unit and Integration Tests stage failed.",
-                    attachLog: true
+                    emailext attachLog: true, body: 'The Unit and Integration Tests stage failed.', subject: 'Failed Unit and Integration Tests Stage', to: 'ananthvandothra@gmail.com'
                 }
             }
         }
@@ -37,16 +34,10 @@ pipeline {
             }
             post {
                 success {
-                    mail to: "ananthvandothra@gmail.com",
-                    subject: "Successful Security Scan",
-                    body: "The Security Scan stage completed successfully!",
-                    attachLog: true
+                    emailext attachLog: true, body: 'The Security Scan stage completed successfully!', subject: 'Successful Security Scan', to: 'ananthvandothra@gmail.com'
                 }
                 failure {
-                    mail to: "ananthvandothra@gmail.com",
-                    subject: "Failed Security Scan Stage",
-                    body: "The Security Scan stage failed.",
-                    attachLog: true
+                    emailext attachLog: true, body: 'The Security Scan stage failed.', subject: 'Failed Security Scan Stage', to: 'ananthvandothra@gmail.com'
                 }
             }
         }
