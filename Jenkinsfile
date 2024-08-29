@@ -24,6 +24,7 @@ pipeline {
                     subject: "Failed Unit and Integration Tests Stage",
                     body: "The Unit and Integration Tests stage failed.",
                     attachLog: true
+                }
             }
         }
 
