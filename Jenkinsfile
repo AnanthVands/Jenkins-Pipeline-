@@ -4,54 +4,68 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                echo 'Building the application with Maven'
+                echo "Building the code using Maven."
             }
         }
 
         stage('Unit and Integration Tests') {
             steps {
-                echo 'Running unit and integration tests'
+                echo "Running unit and integration tests."
+            }
+            post {
+                success {
+                    mail to: "ananthvandothra@gmail.com",
+                    subject: "Successful Unit and Integration Tests Stage",
+                    body: "The Unit and Integration Tests stage completed successfully!"
+                }
+                failure {
+                    mail to: "ananthvandothra@gmail.com",
+                    subject: "Failed Unit and Integration Tests Stage",
+                    body: "The Unit and Integration Tests stage failed."
+                }
             }
         }
 
         stage('Code Analysis') {
             steps {
-                echo 'Performing code analysis with SonarQube'
+                echo "Analyzing code quality with SonarQube."
             }
         }
+
         stage('Security Scan') {
             steps {
-                echo 'Performing security scan with OWASP tool'
+                echo "Performing a security scan with OWASP ZAP or Snyk."
+            }
+            post {
+                success {
+                    mail to: "ananthvandothra@gmail.com",
+                    subject: "Successful Security Scan",
+                    body: "The Security Scan stage completed successfully!"
+                }
+                failure {
+                    mail to: "ananthvandothra@gmail.com",
+                    subject: "Failed Security Scan Stage",
+                    body: "The Security Scan stage failed."
+                }
             }
         }
 
         stage('Deploy to Staging') {
             steps {
-                echo 'Deploying to staging server (AWS)'
+                echo "Deploying the application to a staging server (e.g., AWS EC2)."
             }
         }
 
         stage('Integration Tests on Staging') {
             steps {
-                echo 'Running integration tests on staging environment'
+                echo "Running integration tests on the staging environment."
             }
         }
 
         stage('Deploy to Production') {
             steps {
-                echo 'Deploying to production server (AWS)'
+                echo "Deploying the application to a production server (e.g., AWS EC2)."
             }
-        }
-    }
-
-    post {
-        always {
-            emailext (
-                to: "ananthvandothra@gmail.com",
-                subject: "Jenkins Build - ${currentBuild.fullDisplayName}",
-                body: "Build ${currentBuild.currentResult}: Check console output at ${env.BUILD_URL} to view the results.",
-                attachLog: true
-            )
         }
     }
 }
