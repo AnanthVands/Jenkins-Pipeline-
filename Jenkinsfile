@@ -1,6 +1,10 @@
 pipeline {
     agent any
 
+    triggers {
+        pollSCM('H/5 * * * *') 
+    }
+
     stages {
         stage('Build') {
             steps {
@@ -14,14 +18,10 @@ pipeline {
             }
             post {
                 success {
-                    mail to: "ananthvandothra@gmail.com",
-                    subject: "Successful Unit and Integration Tests Stage",
-                    body: "The Unit and Integration Tests stage completed successfully!"
+                    emailext attachLog: true, body: 'The Unit and Integration Tests stage completed successfully!', compressLog: true, subject: 'Successful Unit and Integration Tests Stage', to: 'ananthvandothra@gmail.com'
                 }
                 failure {
-                    mail to: "ananthvandothra@gmail.com",
-                    subject: "Failed Unit and Integration Tests Stage",
-                    body: "The Unit and Integration Tests stage failed."
+                    emailext attachLog: true, body: 'The Unit and Integration Tests stage failed.', compressLog: true, subject: 'Failed Unit and Integration Tests Stage', to: 'ananthvandothra@gmail.com'
                 }
             }
         }
@@ -38,14 +38,10 @@ pipeline {
             }
             post {
                 success {
-                    mail to: "ananthvandothra@gmail.com",
-                    subject: "Successful Security Scan",
-                    body: "The Security Scan stage completed successfully!"
+                    emailext attachLog: true, body: 'The Security Scan stage completed successfully!', compressLog: true, subject: 'Successful Security Scan', to: 'ananthvandothra@gmail.com'
                 }
                 failure {
-                    mail to: "ananthvandothra@gmail.com",
-                    subject: "Failed Security Scan Stage",
-                    body: "The Security Scan stage failed."
+                    emailext attachLog: true, body: 'The Security Scan stage failed.', compressLog: true, subject: 'Failed Security Scan Stage', to: 'ananthvandothra@gmail.com'
                 }
             }
         }
